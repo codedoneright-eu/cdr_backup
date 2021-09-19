@@ -26,7 +26,6 @@ read -p "What would you like to do (b/r/q): " PART
 if [ $PART = b ]; then
 
     echo ""
-    echo "This part will make a backup." 
     echo "Which device would you like to clone?"
     
     read -p "Please provide the letter (sdX): " DRIVE_B
@@ -80,7 +79,12 @@ elif [ $PART = r ]; then
     read -p "Please specify YYYY part of the name: " YEAR
     read -p "Please specify MM   part of the name: " MONTH
     read -p "Please specify DD   part of the name: " DAY
-
+    
+    echo "Script will restore backup file named ${NAMER}_${YEAR}.${MONTH}.${DAY}.zip"
+    echo "To drive /dev/sd${DRIVE_R}"
+    echo ""
+    read -p "Press enter to continue or Ctrl+C to abort " foo
+    
     echo ""
     echo "Unzipping ${NAMER}_${YEAR}.${MONTH}.${DAY}.zip" 
     echo "This will take a while. Please wait..."
@@ -104,9 +108,8 @@ elif [ $PART = r ]; then
 
 else
 
-    echo ""
+    echo "Nothing has been done..."
 
 fi
 
 echo ""
-echo "Done."
